@@ -1,0 +1,2 @@
+# openai_project
+vps服务器对接openai的api服务程序
