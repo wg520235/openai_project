@@ -772,7 +772,7 @@ void on_message(struct mosquitto *mosq, void *obj, const struct mosquitto_messag
      else if(strstr((char *)message->topic, "openai_speech_to_txt"))
 	{
 		printf("file:%s func:%s line:%d\n", __FILE__, __func__, __LINE__);
-		char *file_path = (char*)"/home/project_openai/build/speech.wav";
+		char *file_path = (char*)"speech_to_speech.wav";
 		if (delete_and_recreate_file(file_path) == 0) {
 		   printf("Operation successful.\n");
 		} else {
