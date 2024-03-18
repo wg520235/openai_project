@@ -826,7 +826,7 @@ void on_message(struct mosquitto *mosq, void *obj, const struct mosquitto_messag
     		printf("file:%s func:%s line:%d\n", __FILE__, __func__, __LINE__);
     		
 		//先删除文件,确保干净
-		char *file_path = (char*)"/home/project_openai/build/speech.wav";
+		char *file_path = (char*)"'speech_to_speech.wav";
 		if (delete_and_recreate_file(file_path) == 0) {
 		   printf("Operation successful.\n");
 		} else {
