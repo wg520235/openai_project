@@ -5,7 +5,7 @@ CURRENT_DIR=$PWD
 echo $CURRENT_DIR
 while true; do
 	# 尝试运行你的程序并获取其PID
-	/home/NikTalk_OpenAI_ChatGPT/project_openai/bin/OpenAI_server $1 &
+	$CURRENT_DIR/project_openai/bin/OpenAI_server $1 &
 	echo $1
 	PID=$!
 	echo $PID
