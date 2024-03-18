@@ -766,7 +766,7 @@ void on_message(struct mosquitto *mosq, void *obj, const struct mosquitto_messag
 			} else {
 			   printf("No content found.\n");
 				 //printf("Extracted content: %s\n", pcontent);
-				char *conten_no_gpt4 =(char*)"your model is not gpt4";
+				char *conten_no_gpt4 =(char*)"你的model不是gpt4, gpt4才支持图片解析";
 			   	mosquitto_publish(mosq, NULL, MQTT_TOPIC_PUSH_FILE_TO_TXT, strlen(conten_no_gpt4), conten_no_gpt4, MQTT_QOS, false);
 			}
 			free(json_string);
