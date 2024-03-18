@@ -4,7 +4,7 @@
 #ifdef  __cplusplus
 extern "C" {
 #endif
-int MqttClient_Init(char *myapi_key);
+int MqttClient_Init(char *myapi_key, char *model, char *imagemodel);
 int MqttClient_UnInit();
 #ifdef  __cplusplus
 }
