@@ -82,7 +82,7 @@ make
 cd $CURRENT_DIR
 echo $CURRENT_DIR
 cp mosquitto.conf ${CMAKE_PROJECT_MQTT_PATH}/etc/mosquitto/mosquitto.conf
-mosquitto -c /etc/mosquitto/mosquitto.conf &
+${CMAKE_PROJECT_MQTT_PATH}/sbin/mosquitto -c ${CMAKE_PROJECT_MQTT_PATH}/etc/mosquitto/mosquitto.conf &
 sleep 3
 #后台运行服务程序
 nohup app_run.sh $1 >/dev/null 2>&1 &
