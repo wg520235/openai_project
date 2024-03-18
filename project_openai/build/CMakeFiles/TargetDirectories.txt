@@ -1,5 +1,0 @@
-/home/NikTalk_OpenAI_ChatGPT/project_openai/build/CMakeFiles/edit_cache.dir
-/home/NikTalk_OpenAI_ChatGPT/project_openai/build/CMakeFiles/rebuild_cache.dir
-/home/NikTalk_OpenAI_ChatGPT/project_openai/build/src/CMakeFiles/OpenAI_server.dir
-/home/NikTalk_OpenAI_ChatGPT/project_openai/build/src/CMakeFiles/edit_cache.dir
-/home/NikTalk_OpenAI_ChatGPT/project_openai/build/src/CMakeFiles/rebuild_cache.dir
