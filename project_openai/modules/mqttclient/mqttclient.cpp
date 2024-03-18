@@ -28,6 +28,8 @@
 #define MQTT_TOPIC_SPEECH_TO_SPEECH	"command/openAi_Api/response/openai_speech_to_speech"
 
 char api_key[256] = {0};
+char g_model[128] = {0};
+char g_image_model[128] = {0};
 
 // 动态字符串结构体
 typedef struct {
@@ -86,7 +88,7 @@ char* openai_api_chat(const char* api_key, const char* user_content) {
         // 构造请求数据
         int dataLen = strlen(user_content)+1024;
         data = (char*)malloc(dataLen); // 根据需要调整大小
-        snprintf(data, dataLen, "{\"model\": \"gpt-4-turbo-preview\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},{\"role\": \"user\", \"content\": \"%s\"}]}", user_content);
+        snprintf(data, dataLen, "{\"model\": \"%s\", \"messages\": [{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},{\"role\": \"user\", \"content\": \"%s\"}]}", g_model, user_content);
 
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
         curl_easy_setopt(curl, CURLOPT_URL, "https://api.openai.com/v1/chat/completions");
@@ -129,7 +131,7 @@ char* openai_text_generate_image(const char* api_key, const char* prompt) {
         curl_easy_setopt(curl, CURLOPT_URL, "https://api.openai.com/v1/images/generations");
         
         char postfields[1024]; // Make sure this buffer is large enough.
-        snprintf(postfields, sizeof(postfields), "{\"model\": \"dall-e-3\", \"prompt\": \"%s\", \"n\": 1, \"size\": \"1024x1024\"}", prompt);
+        snprintf(postfields, sizeof(postfields), "{\"model\": \"%s\", \"prompt\": \"%s\", \"n\": 1, \"size\": \"1024x1024\"}", g_image_model, prompt);
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, postfields);
 
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
@@ -157,13 +159,13 @@ void openai_api_file_to_text(const char *api_key, const char *base64_image, char
   curl = curl_easy_init();
   if(curl) {
     struct curl_slist *headers = NULL;
-    char *data_template =(char*)"{\"model\": \"gpt-4-vision-preview\", \"messages\": [{\"role\": \"user\", \"content\": [{\"type\": \"text\", \"text\": \"What’s in this image?\"},{\"type\": \"image_url\", \"image_url\": {\"url\": \"data:image/jpeg;base64,%s\"}}]}], \"max_tokens\": 300}";
+    char *data_template =(char*)"{\"model\": \"%s\", \"messages\": [{\"role\": \"user\", \"content\": [{\"type\": \"text\", \"text\": \"What’s in this image?\"},{\"type\": \"image_url\", \"image_url\": {\"url\": \"data:image/jpeg;base64,%s\"}}]}], \"max_tokens\": 300}";
     char *post_data = (char *)malloc(strlen(base64_image) + strlen(data_template) - 2); // -2 for the %s
     if (!post_data) {
       fprintf(stderr, "Failed to allocate memory for post data\n");
       exit(EXIT_FAILURE);
     }
-    sprintf(post_data, data_template, base64_image);
+    sprintf(post_data, data_template, g_model, base64_image);
 
     headers = curl_slist_append(headers, "Content-Type: application/json");
     char auth_header[256];
@@ -904,10 +906,12 @@ void *heartbeat_thread(void *mosq) {
 
 struct mosquitto *g_mosq;
 
-int MqttClient_Init(char *myapi_key) {
+int MqttClient_Init(char *myapi_key, char *model, char *imagemodel) {
     //struct mosquitto *mosq;
     int rc;
     strcpy(api_key, myapi_key);
+    strcpy(g_mode, model);
+    strcpy(g_image_model, imagemodel);
     // 初始化libmosquitto
     mosquitto_lib_init();
 
