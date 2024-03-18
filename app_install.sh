@@ -9,6 +9,7 @@ chmod +x /usr/bin/app_run.sh
 cd project_openai
 #建立库文件和头文件目录
 mkdir include lib build
+cd ..
 #安装相关编译工具
 sudo apt install make gcc g++ cmake
 sudo apt-get install libssl-dev
