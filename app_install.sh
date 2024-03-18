@@ -3,11 +3,11 @@
 # 当前工作目录
 CURRENT_DIR=$PWD
 #服务运行脚本
-cp $CURRENT_DIR/app_install.sh /usr/bin
-chmod +x /usr/bin/app_install.sh
+cp $CURRENT_DIR/app_run.sh /usr/bin
+chmod +x /usr/bin/app_run.sh
 
 #安装相关编译工具
-sudo apt install make gcc g++
+sudo apt install make gcc g++ cmake
 sudo apt-get install libssl-dev
 
 # 定义源码下载版本
