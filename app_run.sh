@@ -1,5 +1,8 @@
 #!/bin/bash
-
+# 当前工作目录
+CURRENT_DIR=$PWD
+#服务运行脚本
+echo $CURRENT_DIR
 while true; do
 	# 尝试运行你的程序并获取其PID
 	/home/NikTalk_OpenAI_ChatGPT/project_openai/bin/OpenAI_server $1 &
