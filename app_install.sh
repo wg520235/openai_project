@@ -5,7 +5,8 @@ CURRENT_DIR=$PWD
 #服务运行脚本
 cp $CURRENT_DIR/app_run.sh /usr/bin
 chmod +x /usr/bin/app_run.sh
-
+#建立库文件和头文件目录
+mkdir include lib
 #安装相关编译工具
 sudo apt install make gcc g++ cmake
 sudo apt-get install libssl-dev
