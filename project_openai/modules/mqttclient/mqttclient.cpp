@@ -910,7 +910,7 @@ int MqttClient_Init(char *myapi_key, char *model, char *imagemodel) {
     //struct mosquitto *mosq;
     int rc;
     strcpy(api_key, myapi_key);
-    strcpy(g_mode, model);
+    strcpy(g_model, model);
     strcpy(g_image_model, imagemodel);
     // 初始化libmosquitto
     mosquitto_lib_init();
