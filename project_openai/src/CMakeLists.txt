@@ -11,13 +11,13 @@ include_directories (
 
 		${PROJECT_SOURCE_DIR}/modules/cJson
 		${PROJECT_SOURCE_DIR}/modules/mqttclient
-		${PROJECT_SOURCE_DIR}/modules/chat
+		#${PROJECT_SOURCE_DIR}/modules/chat
 		)
 					
 #将encode模块的源文件路径名称, 重命名为ENCODE_SRC
 set(CJSON_SRC	${PROJECT_SOURCE_DIR}/modules/cJson/cJSON.c)
 set(MQTTCLIENT_SRC ${PROJECT_SOURCE_DIR}/modules/mqttclient/mqttclient.cpp)
-set(CHAT_SRC	${PROJECT_SOURCE_DIR}/modules/chat/chat.cpp)
+#set(CHAT_SRC	${PROJECT_SOURCE_DIR}/modules/chat/chat.cpp)
 #将src目录下的所有.c文件名称, 保存到变量SRC_LIST
 aux_source_directory (. SRC_LIST )
 #指定工程编译所用到的库文件的路径
@@ -31,7 +31,7 @@ link_directories(
 add_executable (${PROG_NAME} ${SRC_LIST}
 		${CJSON_SRC}
 		${MQTTCLIENT_SRC} 
-		${CHAT_SRC}
+		#${CHAT_SRC}
 		)
 
 #链接可执行文件所需要的库文件
