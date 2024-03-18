@@ -80,6 +80,7 @@ make
 
 #开启mqtt服务器
 cd $CURRENT_DIR
+echo $CURRENT_DIR
 cp mosquitto.conf /etc/mosquitto/mosquitto.conf
 mosquitto -c /etc/mosquitto/mosquitto.conf &
 sleep 3
