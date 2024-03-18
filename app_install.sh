@@ -81,7 +81,7 @@ make
 #开启mqtt服务器
 cd $CURRENT_DIR
 echo $CURRENT_DIR
-cp mosquitto.conf /etc/mosquitto/mosquitto.conf
+cp mosquitto.conf ${CMAKE_PROJECT_MQTT_PATH}/etc/mosquitto/mosquitto.conf
 mosquitto -c /etc/mosquitto/mosquitto.conf &
 sleep 3
 #后台运行服务程序
