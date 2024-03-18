@@ -5,6 +5,8 @@ CURRENT_DIR=$PWD
 #服务运行脚本
 cp $CURRENT_DIR/app_run.sh /usr/bin
 chmod +x /usr/bin/app_run.sh
+#工程路径
+cd project_openai
 #建立库文件和头文件目录
 mkdir include lib build
 #安装相关编译工具
